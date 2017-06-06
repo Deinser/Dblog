@@ -7,7 +7,7 @@ from app import db
 
 
 
-app=create_app('default')
+app=create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager=Manager(app)
 migrate=Migrate(app,db)
 
@@ -18,6 +18,19 @@ def make_shell_context():
 				Collect=Collect,Category=Category,Message=Message)
 
 manager.add_command('db',MigrateCommand)
+
+@manager.command
+def deploy()
+from flask_migrate import upgrade
+from app.models import Role,Category
+
+upgrade()
+
+Role.insert_roles()
+
+Category.insert_category()
+
+
 
 
 
