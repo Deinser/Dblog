@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from . import admin
 from .forms import AddadminForm,AddcategoryForm
 from ..models import User,Comment,Article,Category,Role,Permission

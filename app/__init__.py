@@ -1,4 +1,6 @@
 from flask import Flask
+# -*- coding:utf-8 -*-
+
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap

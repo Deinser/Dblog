@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from . import main
 from datetime import datetime
 from flask import render_template,redirect,url_for,request,g,abort,flash,session
