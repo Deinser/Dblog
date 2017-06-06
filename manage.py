@@ -3,6 +3,7 @@ from flask_script import Manager
 from flask_migrate import Migrate,MigrateCommand
 from app.models import User,Role,Article,Comment,Collect,Category,Message
 from app import db
+import os
                                                                                                        
 
 
@@ -20,15 +21,15 @@ def make_shell_context():
 manager.add_command('db',MigrateCommand)
 
 @manager.command
-def deploy()
-from flask_migrate import upgrade
-from app.models import Role,Category
+def deploy():
+	from flask_migrate import upgrade
+	from app.models import Role,Category
 
-upgrade()
+	upgrade()
 
-Role.insert_roles()
+	Role.insert_roles()
 
-Category.insert_category()
+	Category.insert_category()
 
 
 
