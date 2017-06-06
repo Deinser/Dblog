@@ -20,8 +20,8 @@ class Config:
 
 class DevelopmentConfig(Config):
 	DEBUG=True
-	SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URI')' or \
-								sqlite:///'+os.path.join(name,'dev.sqlite')
+	SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URI') or \
+								'sqlite:///'+os.path.join(name,'dev.sqlite')
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
 	
 class TestingConfig(Config):
