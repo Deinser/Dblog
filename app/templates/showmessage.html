@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Dblog - 查看私信{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h2>查看私信</h2>
+</div>
+{% set message = True %}
+{% include '_message.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.show_message') }}
+</div>
+{% endif %}
+{% endblock %}
