@@ -21,13 +21,13 @@ class Config:
 
 class DevelopmentConfig(Config):
 	DEBUG=True
-	SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URI') or \
+	SQLALCHEMY_DATABASE_URI=os.environ.get('DEV_DATABASE_URI') or \
 								'sqlite:///'+os.path.join(name,'dev.sqlite')
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
 	
 class TestingConfig(Config):
 	Testing=True
-	SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URI') or \
+	SQLALCHEMY_DATABASE_URI=os.environ.get('TEST_DATABASE_URI') or \
 								'sqlite:///'+os.path.join(name,'test.sqlite')
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
 	

@@ -21,8 +21,31 @@ def make_shell_context():
 
 manager.add_command('db',MigrateCommand)
 
+
+@manager.command
+def datainit():
+	from app.models import Role,User,Article,Category
+	print('Category init')
+	Category.insert_categorys()
+	print('Role init')
+	Role.insert_roles()
+	print('User and Article generate')
+	User.generate_fake(50)
+	Article.generate_fake(50)
+	
+
+
+@manager.command
+def test():
+	"""运行单元测试"""
+	import unittest
+	tests=unittest.TestLoader().discover('tests')
+	unittest.TextTestRunner(verbosity=2).run(tests)
+	
+
 @manager.command
 def deploy():
+	"""运行部署任务"""
 	from flask_migrate import upgrade
 	from app.models import Role,Category
 
@@ -31,9 +54,6 @@ def deploy():
 	Role.insert_roles()
 
 	Category.insert_category()
-
-
-
 
 
 
