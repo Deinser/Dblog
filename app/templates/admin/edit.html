@@ -61,14 +61,30 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-circle-o text-red"></i> <span>热门文章</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu" style="display: block;">
+		  {% if g.hot_articles[0] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[0].id) }}">No1. {{g.hot_articles[0].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[1] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[1].id) }}">No2. {{g.hot_articles[1].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[2] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[2].id) }}">No3. {{g.hot_articles[2].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[3] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[3].id) }}">No4. {{g.hot_articles[3].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[4] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[4].id) }}">No5. {{g.hot_articles[4].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[5] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[5].id) }}">No6. {{g.hot_articles[5].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[6] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[6].id) }}">No7. {{g.hot_articles[6].head}}</a></li>
+		  {% endif %}
+		  {% if g.hot_articles[7] %}
           <li><a href="{{ url_for('main.article', id=g.hot_articles[7].id) }}">No8. {{g.hot_articles[7].head}}</a></li>
+		  {% endif %}
 <!--                 最长26字    -->         
         </ul>
       </li>  

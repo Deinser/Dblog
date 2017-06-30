@@ -26,7 +26,7 @@ manager.add_command('db',MigrateCommand)
 def datainit():
 	from app.models import Role,User,Article,Category
 	print('Category init')
-	Category.insert_categorys()
+	Category.insert_category()
 	print('Role init')
 	Role.insert_roles()
 	print('User and Article generate')

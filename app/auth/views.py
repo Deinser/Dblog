@@ -32,10 +32,9 @@ def register():
 		if user2 is not None:
 			flash('用户名已经被注册')
 			return redirect(url_for('auth.register'))
-		user=User()
-		user.email=form.email.data
-		user.username=form.username.data
-		user.password=form.password.data
+		user=User(email=form.email.data,
+				  username=form.username.data,
+				  password=form.password.data)
 		db.session.add(user)
 		db.session.commit()
 		flash('注册成功')
