@@ -3,14 +3,15 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField,TextField,SelectField,BooleanField,PasswordField
 from wtforms.validators import Required,Length,Email
 from ..models import Category
+from flask_pagedown.fields import PageDownField
 
 
 
 class ArticleForm(FlaskForm):
 	category=SelectField('分类',coerce=int)
 	title=StringField('标题',validators=[Required(),Length(1,20)])
-	body=TextField('正文',validators=[Required()])
-	submit=SubmitField('提交')
+	body=PageDownField('正文',validators=[Required()])
+	submit=SubmitField('发布')
 	
 	def __init__(self,*args,**kwargs):
 		super(ArticleForm,self).__init__(*args,**kwargs)

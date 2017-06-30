@@ -30,13 +30,13 @@
             {{ moment(article.timestamp).format('LLL') }}</div>
             <div class="post-author"><a href="{{ url_for('.user', username=article.author.username) }}">{{ article.author.username }}</a></div>
             <div class="post-head">
-            <a href="{{ url_for('.article', id=article.id) }}"><h2>{{ article.title }}</h2>><small>&nbsp;阅读:{{ article.visit }}</small></<small>&nbsp;收藏:{{ article.collectors.count() }}</small></a>
+            <font size="5"> {{ article.title }}</font><small>&nbsp;阅读:{{ article.visit }}</small></<small>&nbsp;收藏:{{ article.collectors.count() }}</small>
             </div>
-            <div class="post-body">
+            <div class="post-body" >
                 {% if article.body_html %}                   
                     {{ article.body_html | safe }}
                 {% else %}                    
-                    {{ article.body }}
+                    <font size="3">{{ article.body }}</font>
                 {% endif %}
             </div>
             <div class="post-footer">

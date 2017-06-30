@@ -56,16 +56,15 @@ def about_me():
 def write_article():
 	form=ArticleForm()
 	if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
-		article=Article()
-		article.category=Category.query.get(form.category.data)
-		article.title=form.title.data
-		article.body=form.body.data
-		article.author=current_user._get_current_object()
+		article=Article(category=Category.query.get(form.category.data),
+						title=form.title.data,
+						body=form.body.data,
+						author=current_user._get_current_object())
 		db.session.add(article)
 		db.session.commit()
 		flash('提交成功')
 		return redirect(url_for('.index'))
-	return render_template('write_articlea.html',form=form)
+	return render_template('write_article.html',form=form)
 
 
 	

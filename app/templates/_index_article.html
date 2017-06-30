@@ -1,37 +1,12 @@
 <ul class="posts">
     {% for article in articles %}
     <li class="post">
-        <div class="post-thumbnail">
-
-            <a href="{{ url_for('.user', username=article.author.username) }}"> 
-                <img class="img-rounded profile-thumbnail" src="{{ article.author.gravatar(size=40) }}">
-            
-        </div>
         <div class="post-content">
             <div class="post-date">发布于:{{ moment(article.timestamp).fromNow() }} <br>
             From <a href="#"> {{article.category.name}} </a></div>
-            <div class="post-author"><a href="{{ url_for('.user', username=article.author.username) }}">{{ article.author.username }}</a></div>
+            
             <div class="post-head">
-            <a href="{{ url_for('.article', id=article.id) }}"><h2>{{ article.title }}</h2>><small>&nbsp;阅读:{{ article.visit }}</small></<small>&nbsp;收藏:{{ article.collector.__len__() }}</small></a>
-            </div>
-            <div class="post-body">
-                <a style="text-decoration:none; color:black" href="{{ url_for('.article', id=article.id) }}">
-                {% if article.body_html %}
-                    {{ article.head_html | safe }}<br/>
-                    {% if article.body[200] %}
-                    {{ article.body_html[0:200] | safe }}....
-                    {% else %}
-                    {{ article.body_html | safe }}
-                    {% endif %}
-                {% else %}
-                    {{ article.head }}<br/>
-                    {% if article.body[200] %}
-                    {{ article.body[0:200]}}...
-                    {% else %}
-                    {{ article.body}}
-                    {% endif %}                
-                {% endif %}
-                </a>
+            <a href="{{ url_for('.article', id=article.id) }}"><h3>{{ article.title }}</h3><small>&nbsp;阅读:{{ article.visit }}</small></<small>&nbsp;收藏:{{ article.collector.__len__() }}</small></a>
             </div>
             <div class="post-footer">
                 {% if current_user == article.author %}

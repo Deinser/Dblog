@@ -6,6 +6,8 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask import request,current_app
 import hashlib
+from markdown import markdown
+import bleach
 
 
 @login_manager.user_loader
@@ -233,6 +235,7 @@ class Article(db.Model):
 	id=db.Column(db.Integer,primary_key=True)
 	title=db.Column(db.String(128))
 	body=db.Column(db.Text)
+	body_html=db.Column(db.Text)
 	visit=db.Column(db.Integer,default=0)
 	timestamp=db.Column(db.DateTime,default=datetime.utcnow)
 	author_id=db.Column(db.Integer,db.ForeignKey('users.id'))
@@ -255,6 +258,15 @@ class Article(db.Model):
 	@staticmethod
 	def hot_article():
 		hot=Article.query.order_by(Article.comments.count().desc()).all()[0:10]
+		
+	@staticmethod
+	def on_changed_body(target,value,oldvalue,initiator):
+		allowed_tags=['a','abbr','acronym','b','blockquote','code',
+					  'em','i','li','ol','pre','strong','ul',
+					  'h1','h2','h3','p']
+		target.body_html=bleach.linkify(bleach.clean(
+				markdown(value,output_format='html'),
+				tags=allowed_tags,strip=True))
 		
 	@staticmethod
 	def generate_fake(count=100):
@@ -321,6 +333,7 @@ class AnonymousUser(AnonymousUserMixin):
 		return True
 		
 login_manager.anonymous_user=AnonymousUser
+db.event.listen(Article.body,'set',Article.on_changed_body)
 		
 	
 	
