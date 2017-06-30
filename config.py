@@ -23,6 +23,8 @@ class DevelopmentConfig(Config):
 	DEBUG=True
 	SQLALCHEMY_DATABASE_URI=os.environ.get('DEV_DATABASE_URL') or \
 								'sqlite:///'+os.path.join(name,'dev.sqlite')
+	#'postgresql://postgres:547818700@localhost:5432/template1'
+								
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
 	
 class TestingConfig(Config):

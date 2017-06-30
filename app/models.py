@@ -67,8 +67,8 @@ class Comment(db.Model):
 	disable=db.Column(db.Boolean)
 	confirmed=db.Column(db.Boolean,default=False)
 	article_id=db.Column(db.Integer,db.ForeignKey('articles.id'))
-	author_id=db.Column(db.String,db.ForeignKey('users.id'))
-	recipent_id=db.Column(db.String,db.ForeignKey('users.id'))
+	author_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+	recipent_id=db.Column(db.Integer,db.ForeignKey('users.id'))
 	
 	
 class User(db.Model,UserMixin):
