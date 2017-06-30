@@ -408,13 +408,16 @@ def message_delete(id):
 	
 	
 	
+
+	
 @main.route('/search',methods=['GET','POST'])
 def search():
 	query=g.search_form.search.data
+	articles=[]
 	if g.search_form.validate_on_submit():
-		session['articles']=Article.query.filter(Article.title.like('%'+query+'%')).all()
-		return redirect(url_for('.search'))
-	return render_template('search_results.html',articles=session.get('name'),query=query)
+		articles=Article.query.filter(Article.title.like('%'+query+'%')).all()
+	return render_template('search_results.html',articles=articles,query=query)
+	
 	
 	
 

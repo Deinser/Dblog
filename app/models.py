@@ -102,11 +102,10 @@ class User(db.Model,UserMixin):
 	
 	def __init__(self,**kwargs):
 		super(User,self).__init__(**kwargs)
-		if self.role is None:
-			if self.email=='122744952@qq.com':
-				self.role=Role.query.filter_by(name='Administrator').first()
-			if self.role is None:
-				self.role=Role.query.filter_by(name='User').first()
+		if self.email=='122744952@qq.com':
+			self.role=Role.query.filter_by(name='Administrator').first()
+		else:   
+			self.role=Role.query.filter_by(name='User').first()
 			
 	def can(self,permission):
 		return self.role is not None and \

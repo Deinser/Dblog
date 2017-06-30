@@ -37,7 +37,6 @@ psycopg2==2.7.1
 pyparsing==2.2.0
 python-dateutil==2.6.0
 python-editor==1.0.3
-qiniu==7.1.4
 requests==2.17.3
 six==1.10.0
 SQLAlchemy==1.1.10
