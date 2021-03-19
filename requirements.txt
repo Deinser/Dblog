@@ -31,7 +31,7 @@ httpauth==0.3
 idna==2.5
 iso8601==0.1.11
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 leancloud-sdk==1.12.0
 Mail==2.1.0
 Mako==1.0.6
